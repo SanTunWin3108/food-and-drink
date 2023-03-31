@@ -21,6 +21,10 @@ body {
     color: rgb(245, 232, 157);
 }
 
+.navbar-light .navbar-nav .nav-link.active-tab {
+    color: rgb(245, 232, 157);
+}
+
 .navbar-light .navbar-toggler {
     border-color: gold;
     color: gold;
@@ -29,6 +33,23 @@ body {
 i.fa-bars {
     color: gold;
     font-size: 30px;
+}
+
+/* Main */
+main h1 {
+    color: rgb(133, 32, 32);
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+main .card {
+    transition: all .4s;
+    background-color: rgb(255, 247, 231);
+}
+
+main .card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    transition: all .4s;
 }
 
 @media (max-width: 992px) {
