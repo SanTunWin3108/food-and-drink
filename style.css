@@ -9,6 +9,12 @@ body {
 /* Nav */
 .navbar {
     background-color: rgb(133, 32, 32);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -42,15 +48,26 @@ main h1 {
     font-size: 3rem;
 }
 
-main .card {
+.card-shadow-effect {
     transition: all .4s;
     background-color: rgb(255, 247, 231);
 }
 
-main .card:hover {
+.card-shadow-effect:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
     transition: all .4s;
 }
+
+.brown-color {
+    color: rgb(133, 32, 32);
+}
+
+/* Tea Products */
+.bg-brown-color {
+    background-color: rgb(133, 32, 32);
+}
+
+
 
 @media (max-width: 992px) {
     .navbar-light .navbar-nav .nav-link {
