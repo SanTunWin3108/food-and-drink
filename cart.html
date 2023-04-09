@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Resources/css/all.min.css">
+    <link rel="stylesheet" href="../ResourcesTwo/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Cart</title>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
+        <div class="container">
+          <a class="navbar-brand fs-2 fw-bold text-warning" href="#">F&D</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="index.html">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="tea.html">Tea</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="coffee.html">Coffee</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="juice.html">Juice</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="cake.html">Cake</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active-tab fs-5" href="cart.html">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    
+    <!-- Items -->
+    <section class="items py-5">
+        <div class="container pt-5">
+            <div class="row pt-5 overflow-x-auto">
+                <h2 class="no-item text-center fw-bold"></h2>
+                <table class="table text-center bg-white">
+                    <thead class="hide">
+                      <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <!-- <tr class="py-5">
+                        <td class="align-middle"><img src="image/apple juice.jpg" class="item-image" alt=""></td>
+                        <td class="align-middle item-name">Apple Juice</td>
+                        <td class="align-middle item-price">$5</td>
+                        <td class="align-middle"><input class="qty" type="number" value="0" min="0"></td>
+                        <td class="align-middle total">6</td>
+                        <td class="align-middle"><i class="fa-regular removeBtn fa-circle-xmark"></i></td>
+                      </tr>
+
+                      <tr class="py-5">
+                        <td class="align-middle"><img src="image/apple juice.jpg" alt=""></td>
+                        <td class="align-middle">Apple Juice</td>
+                        <td class="align-middle">$5</td>
+                        <td class="align-middle"><input class="qty" type="number" value="0" min="0"></td>
+                        <td class="align-middle">6</td>
+                        <td class="align-middle"><i class="fa-regular removeBtn fa-circle-xmark"></i></td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script src="../ResourcesTwo/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
