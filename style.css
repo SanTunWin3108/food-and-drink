@@ -151,10 +151,27 @@ tbody tr {
     font-weight: bold;
 }
 
+.grand-total {
+    background-color: rgb(133, 32, 32);
+    width: 550px;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px;
+    color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
 .hide {
     display: none;
 }
 
+.back-to-home {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 
 @media (max-width: 992px) {
     .navbar-light .navbar-nav .nav-link {
@@ -172,6 +189,10 @@ tbody tr {
         padding: 20px;
         width: 90vw;
         align-items: center;
+    }
+
+    .grand-total {
+        width: 92vw;
     }
 }
 

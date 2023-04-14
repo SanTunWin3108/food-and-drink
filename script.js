@@ -5,6 +5,10 @@ const tableHeading = document.querySelector('thead');
 const no_item = document.querySelector('.no-item');
 const modalBox = document.querySelector('.modalBox');
 const closeBtn = document.querySelector('.close-btn');
+const grandTotal = document.querySelector('.grand-total');
+const grandTotalPrice = document.querySelector('.grand-total-price');
+const grandTotalSpan = document.querySelector('.grand-total-span');
+
 
 for(let addBtn of addToCartButtons) {
     addBtn.addEventListener('click', (e) => {
@@ -43,7 +47,59 @@ const setToLocalstorage = (itemArr) => {
     localStorage.setItem('itemArr', JSON.stringify(itemArr));
 }
 
+//calculate grand total
+const calculateGrandTotal = () => {
+    const total_costs = document.querySelectorAll('.total');
+            let grand_total_cost = 0;
+            for(let cost of total_costs) {
+                if(cost.innerText !== '0') {
+                    grand_total_cost += Number(cost.innerText.split('$ ')[1]);
+                }
+            }
 
+            grandTotalSpan.innerText = grand_total_cost;
+            
+}
+
+//store input values and total cost to local storage
+const storeInputAndTotalInLocalStorage = () => {
+    const inputValues = document.querySelectorAll('.qty');
+    
+    for(let input_value of inputValues) {
+        
+    }
+    
+}
+
+
+//calculate total
+const calculateTotal = (tableBody) => {
+    const qtyInputs = tableBody.querySelectorAll('.qty');
+    
+    
+    for(let qtyInput of qtyInputs) {
+        qtyInput.addEventListener('input', (e) => {
+            const cartItemPrice = e.target.parentElement.parentElement.querySelector('.item-price').innerText.split('$')[1];
+            let quantityInput = Number(e.target.value);
+            let totalCost = e.target.parentElement.parentElement.querySelector('.total');
+
+            if(quantityInput < 0) {
+                quantityInput = '0';
+                e.target.value = '0'; 
+            }
+
+            let total = eval(cartItemPrice * quantityInput);
+            totalCost.innerText = '$ ' + total;
+
+            calculateGrandTotal();
+
+            //store input values and total cost to local storage
+            storeInputAndTotalInLocalStorage();
+        });
+    }
+}
+
+//create cart item
 const createCartItem = (cartItem) => {
     const tableRow = `<tr class="py-5">
     <td class="align-middle"><img src="${cartItem.itemImage}" class="item-image" alt=""></td>
@@ -58,8 +114,11 @@ const createCartItem = (cartItem) => {
     const removeButtons = document.querySelectorAll('.removeBtn');
     
     removeItems(removeButtons);
+
+    calculateTotal(tableBody);
 }
 
+//remove items
 const removeItems = (removeButtons) => {
     for(let removeBtn of removeButtons) {
         removeBtn.addEventListener('click', (e) => {
@@ -72,8 +131,11 @@ const removeItems = (removeButtons) => {
 
             if(itemArr.length <= 0) {
                 tableHeading.classList.add('hide');
+                grandTotal.classList.add('hide');
                 no_item.innerText = 'There is no item';
             }
+
+            calculateGrandTotal();
         });
 
     }
@@ -83,6 +145,10 @@ const removeItems = (removeButtons) => {
 //if item array has one or more elements, create cart item
 if(tableHeading !== null) {
     if(itemArr.length > 0) {
+
+        //show grand total
+        grandTotal.classList.remove('hide');
+
         no_item.innerText = '';
         tableHeading.classList.remove('hide');
         for(let cartItem of itemArr) {
@@ -95,7 +161,11 @@ if(tableHeading !== null) {
 }
 
 //close modal box
-closeBtn.addEventListener('click', () => {
-    modalBox.classList.add('hide');
-});
+if(closeBtn !== null) {
+    closeBtn.addEventListener('click', () => {
+        modalBox.classList.add('hide');
+    });
+}
+
+
 
