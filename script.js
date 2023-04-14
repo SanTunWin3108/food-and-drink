@@ -8,6 +8,7 @@ const closeBtn = document.querySelector('.close-btn');
 const grandTotal = document.querySelector('.grand-total');
 const grandTotalPrice = document.querySelector('.grand-total-price');
 const grandTotalSpan = document.querySelector('.grand-total-span');
+let item_arr_two = [];
 
 
 for(let addBtn of addToCartButtons) {
@@ -47,6 +48,10 @@ const setToLocalstorage = (itemArr) => {
     localStorage.setItem('itemArr', JSON.stringify(itemArr));
 }
 
+
+
+
+
 //calculate grand total
 const calculateGrandTotal = () => {
     const total_costs = document.querySelectorAll('.total');
@@ -61,12 +66,46 @@ const calculateGrandTotal = () => {
             
 }
 
+//create object for storing item name, quantity and total cost in local storage
+const creatItemObject = (item_name, item_quantity, item_cost) => {
+    return {
+        item_name,
+        item_quantity,
+        item_cost
+    }
+}
+
 //store input values and total cost to local storage
 const storeInputAndTotalInLocalStorage = () => {
     const inputValues = document.querySelectorAll('.qty');
     
     for(let input_value of inputValues) {
-        
+        input_value.addEventListener('input', (e) => {
+            const item_name = e.target.parentElement.parentElement.querySelector('.item-name').innerText;
+            const item_quantity = e.target.value;
+            const item_cost = e.target.parentElement.parentElement.querySelector('.total').innerText;
+
+            const item_object = creatItemObject(item_name, item_quantity, item_cost);
+            
+            //check if object exists in array
+            let index = item_arr_two.findIndex(obj => obj.item_name === item_object.item_name);
+            if(index !== -1) {
+                item_arr_two = item_arr_two.map(obj => {
+                    if(obj.item_name === item_object.item_name) {
+                        return {...obj, item_quantity: item_quantity, item_cost: item_cost};
+                    } else {
+                        return obj;
+                    }
+                });
+
+                localStorage.setItem('item_arr_two', JSON.stringify(item_arr_two));
+                return;
+            }
+
+            item_arr_two.push(item_object);
+            //store item arr two in local storage
+            localStorage.setItem('item_arr_two', JSON.stringify(item_arr_two));
+        });
     }
     
 }
