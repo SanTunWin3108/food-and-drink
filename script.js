@@ -225,6 +225,8 @@ if(item_arr_two.length > 0) {
             }
         }
     }
+
+    calculateGrandTotal();
 }
 
 
