@@ -8,7 +8,7 @@ const closeBtn = document.querySelector('.close-btn');
 const grandTotal = document.querySelector('.grand-total');
 const grandTotalPrice = document.querySelector('.grand-total-price');
 const grandTotalSpan = document.querySelector('.grand-total-span');
-let item_arr_two = [];
+let item_arr_two = JSON.parse(localStorage.getItem("item_arr_two")) || [];
 
 
 for(let addBtn of addToCartButtons) {
@@ -133,7 +133,6 @@ const calculateTotal = (tableBody) => {
             calculateGrandTotal();
 
             //store input values and total cost to local storage
-            storeInputAndTotalInLocalStorage();
         });
     }
 }
@@ -155,6 +154,15 @@ const createCartItem = (cartItem) => {
     removeItems(removeButtons);
 
     calculateTotal(tableBody);
+
+    storeInputAndTotalInLocalStorage(tableBody);
+}
+
+//remove from local storage
+const removeFromLocalStorage = (remove_item_name) => {
+    let index_2 = item_arr_two.findIndex(obj => obj.item_name === remove_item_name);
+    item_arr_two.splice(index_2, 1);
+    localStorage.setItem('item_arr_two', JSON.stringify(item_arr_two));
 }
 
 //remove items
@@ -167,6 +175,7 @@ const removeItems = (removeButtons) => {
             let index = itemArr.findIndex(obj => obj.itemName === remove_item_name);
             itemArr.splice(index, 1);
             setToLocalstorage(itemArr);
+            removeFromLocalStorage(remove_item_name);
 
             if(itemArr.length <= 0) {
                 tableHeading.classList.add('hide');
@@ -206,5 +215,18 @@ if(closeBtn !== null) {
     });
 }
 
+if(item_arr_two.length > 0) {
+    for(let item of item_arr_two) {
+        const itemNames = document.querySelectorAll('.item-name');
+        for(let name of itemNames) {
+            if(item.item_name === name.innerText) {
+                name.nextElementSibling.nextElementSibling.childNodes[0].value = item.item_quantity;
+                name.nextElementSibling.nextElementSibling.nextElementSibling.innerText = item.item_cost;
+            }
+        }
+    }
+}
 
 
+
+//name.nextElementSibling.nextElementSibling.childNodes[0].value
