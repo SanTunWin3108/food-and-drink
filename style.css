@@ -67,6 +67,10 @@ main h1 {
     background-color: rgb(133, 32, 32);
 }
 
+.bg-brown-color:hover {
+    background-color: rgb(133, 32, 32);
+}
+
 .items td img {
     width: 85px;
     height: 80px;
