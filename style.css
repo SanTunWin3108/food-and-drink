@@ -173,6 +173,10 @@ tbody tr {
     justify-content: center;
 }
 
+.fa-shopping-cart {
+    font-size: 1.5rem;
+}
+
 @media (max-width: 992px) {
     .navbar-light .navbar-nav .nav-link {
         margin-left: 0;

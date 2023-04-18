@@ -62,7 +62,10 @@ const calculateGrandTotal = () => {
                 }
             }
 
-            grandTotalSpan.innerText = grand_total_cost;
+            
+            if(grandTotalSpan !== null) {
+                grandTotalSpan.innerText = grand_total_cost;
+            }
             
 }
 
@@ -145,7 +148,7 @@ const createCartItem = (cartItem) => {
     <td class="align-middle item-price">${cartItem.itemPrice}</td>
     <td class="align-middle"><input class="qty" type="number" value="0" min="0"></td>
     <td class="align-middle total">0</td>
-    <td class="align-middle"><i class="fa-regular removeBtn fa-circle-xmark"></i></td>
+    <td class="align-middle"><i class="fa fa-times-circle-o removeBtn"></i></td>
   </tr>`;
     tableBody.innerHTML += tableRow;
 
